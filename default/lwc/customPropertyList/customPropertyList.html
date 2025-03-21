@@ -1,8 +1,18 @@
 <template>
    <div class="main-content">
-    <lightning-button variant="brand" label="Search"  onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    <div class="input-div">
+        <lightning-input class="price-input" type="number"  label="Price" onchange={handlePrice}></lightning-input>
+        <lightning-combobox class="status-input" label="Property Availability Status" value={status} options={statusOptions} onchange={handleStatusChange}> </lightning-combobox>
+        <lightning-combobox class="furnishing-status-input" label="Furnishing Status" value={furnishingStatus} options={furnishingStatusOptions} onchange={handleFurnishStatusChange}> </lightning-combobox>
+        <lightning-input class="lat-input" type="number"  label="Latitude" onchange={handleLat}></lightning-input>
+        <lightning-input class="long-input" type="number"  label="Longitude" onchange={handleLog}></lightning-input>
+    </div>
+    <div class="search-button-div">
+        <lightning-button variant="brand" label="Search"  onclick={handleClick} ></lightning-button>
+    </div>
     <p style="font-size:15px;margin:15px;">{message}</p>
     <template if:true ={isDataLoaded}>
+
         <div class="table-div">
             <table class="prop-table">
                 <thead>
@@ -27,7 +37,14 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="pagination-div">
+            <lightning-button label="Previous"  onclick={handlePrevious} class="slds-m-left_x-small"></lightning-button>
+            <p style="font-size:17px;font-weight:600;">{pageNumber}</p> 
+            <lightning-button label="Next"  onclick={handleNext} class="slds-m-left_x-small"></lightning-button> 
+        </div>
+
     </template>
-    
+
    </div> 
 </template>

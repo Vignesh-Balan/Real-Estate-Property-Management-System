@@ -1,5 +1,8 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 import getPropertyList from '@salesforce/apex/PropertyListClass.getPropertyList';
+import { getPicklistValues} from 'lightning/uiObjectInfoApi';
+import STATUS_FIELD from '@salesforce/schema/Property__c.Status__c';
+import FURNISHING_STATUS_FIELD from '@salesforce/schema/Property__c.Furnishing_Status__c';
 
 export default class CustomPropertyList extends LightningElement {
 
@@ -7,14 +10,85 @@ export default class CustomPropertyList extends LightningElement {
     isDataLoaded = false;
     message ="";
 
+    price = 0.0;
+    status = "";
+    furnishingStatus = "";
+    lat = 0.0;
+    log = 0.0;
+    statusOptions;
+    furnishingStatusOptions;
+    pageNumber = 1;
+    startNumber =0;
+
+    @wire(getPicklistValues,{recordTypeId:"012000000000000AAA", fieldApiName: STATUS_FIELD})
+    getPicklistStatus({data,error}){
+        if(data){
+            this.statusOptions = data.values;
+        }else {
+            console.log('Status picklist error : ' +error);
+        }
+    }
+
+    @wire(getPicklistValues,{recordTypeId:"012000000000000AAA", fieldApiName: FURNISHING_STATUS_FIELD})
+    getPicklistFurnishingStatus({data,error}){
+        if(data){
+            this.furnishingStatusOptions = data.values;
+        }else {
+            console.log('Status picklist error : ' +error);
+        }
+    }
+
+    handlePrice(event){
+        this.price = event.target.value;
+    }
+
+    handleStatusChange(event){
+        this.status = event.target.value;
+    }
+
+    handleFurnishStatusChange(event){
+        this.furnishingStatus = event.target.value;
+    }
+    handleLat(event){
+        this.lat = event.target.value;
+    }
+
+    handleLog(event){
+        this.log = event.target.value;
+    }
+
     handleClick(){
         this.isDataLoaded = false;
         this.message = "";
+        this.startNumber = 0;
+        this.pageNumber = 1;
+        this.handlePropData();
+    }
+
+    handlePrevious(){
+        if(this.pageNumber !== 1){
+            this.isDataLoaded = false;
+            this.message = "";
+            this.pageNumber -= 1;
+            this.startNumber -= 25;
+            this.handlePropData();
+        }
+    }
+
+    handleNext(){
+        this.isDataLoaded = false;
+        this.message = "";
+        this.startNumber += 25;
+        this.pageNumber += 1;
+        this.handlePropData();
+    }
+
+    handlePropData(){
         getPropertyList({
-            startNumber:0,
-            inputPrice:0.0,
-            inputStatus:"",
-            inputFurnishingStatus:"",
+            startNumber:this.startNumber,
+            inputPrice:this.price,
+            inputStatus:this.status,
+            inputFurnishingStatus:this.furnishingStatus,
             inputLong:0.0,
             inputLat:0.0
         }).then( result => {

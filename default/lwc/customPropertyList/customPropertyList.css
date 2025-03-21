@@ -4,7 +4,12 @@
     min-height:400px;
     padding:10px;
 }
-
+.search-button-div{
+    display:flex;
+    justify-content:left;
+    margin-top:20px;
+    margin-left:30px;
+}
 .table-div{
     margin-top:20px;
 }
@@ -41,4 +46,43 @@ tbody{
     vertical-align:top;
     word-wrap: break-word;
     max-width:60px;
+}
+
+.pagination-div{
+    display:flex;
+    justify-content:space-between;
+    vertical-align: middle;
+    margin-top:10px;
+}
+
+.input-div{
+    display:flex;
+    flex:wrap;
+    margin-left:15px;
+    justify-content:flex-start;
+}
+
+.price-input{
+    flex:2;
+    margin-right:15px;
+}
+
+.status-input{
+    flex:2;
+    margin-right:15px;
+}
+
+.furnishing-status-input{
+    flex:2;
+    margin-right:15px;
+}
+
+.lat-input{
+    flex:1;
+    margin-right:15px;
+}
+
+.long-input{
+    flex:1;
+    margin-right:15px;
 }
