@@ -1,0 +1,11 @@
+<template>
+    <div class="main-content">
+        <p style="font-size:20px;font-weight:700px;margin:15px;" >Generate PDF</p>
+        <div class="slds-p-around_medium">
+            <lightning-textarea type="text" label="Add provisions to terms and Conditions" onchange={handleInputText}></lightning-textarea>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Download PDF" onclick={generatePDF}></lightning-button>
+        </div>
+    </div>
+</template>
