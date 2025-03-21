@@ -1,5 +1,33 @@
 <template>
    <div class="main-content">
-
+    <lightning-button variant="brand" label="Search"  onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    <p style="font-size:15px;margin:15px;">{message}</p>
+    <template if:true ={isDataLoaded}>
+        <div class="table-div">
+            <table class="prop-table">
+                <thead>
+                    <tr>
+                        <th class="name-head">Name</th>
+                        <th class="address-head">Address</th>
+                        <th class="rent-head">Rent</th>
+                        <th class="status-head">Status</th>
+                        <th class="furnishing-status-head">Funishing Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={propList} for:item="propItem">
+                        <tr key={propItem.Id}>
+                            <td class="name-data">{propItem.name}</td>
+                            <td class="address-data">{propItem.address}</td>
+                            <td class="price-data">Rs. {propItem.price}</td>
+                            <td class="status-data">{propItem.status}</td>
+                            <td class="furnishing-status-data">{propItem.furnishingStatus}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </template>
+    
    </div> 
 </template>

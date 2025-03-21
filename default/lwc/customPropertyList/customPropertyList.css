@@ -1,3 +1,44 @@
 .main-content{
-    
+    background-color: white;
+    width:100%;
+    min-height:400px;
+    padding:10px;
+}
+
+.table-div{
+    margin-top:20px;
+}
+
+th{
+    height:15px;
+    background-color:rgb(76, 177, 236);
+    text-align:center;
+    vertical-align:middle;
+}
+
+tbody{
+    height:13px;
+    border-bottom:1px solid rgb(196, 202, 202);
+}
+ 
+.name-data, .price-data, .status-data, .furnishing-status-data{
+    text-align:center;
+}
+
+.address-data{
+    text-align:left;
+    vertical-align:top;
+    word-wrap: break-word;
+    max-width:60px;
+}
+
+.name-head, .price-head, .status-head, .furnishing-status-head{
+    text-align:center;
+}
+
+.address-head{
+    text-align:left;
+    vertical-align:top;
+    word-wrap: break-word;
+    max-width:60px;
 }

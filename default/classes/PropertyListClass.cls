@@ -29,10 +29,10 @@ public class PropertyListClass {
         List<PropertyListWrapper> resultList = new List<PropertyListWrapper>();
         
         for(Property__c prop: propList){
-            String Address = prop.Address__Street__s +' '+prop.Address__City__s+' '+prop.Address__PostalCode__s+' '+ 
+            String address = prop.Address__Street__s +' '+prop.Address__City__s+' '+prop.Address__PostalCode__s+' '+ 
                 			 prop.Address__StateCode__s +' '+ prop.Address__CountryCode__s;
                 
-            PropertyListWrapper propWrap = new PropertyListWrapper(prop.Name,prop.Rent__c,prop.Status__c,prop.Furnishing_Status__c,Address,prop.Type__c);
+            PropertyListWrapper propWrap = new PropertyListWrapper(prop.Id,prop.Name,prop.Rent__c,prop.Status__c,prop.Furnishing_Status__c,address,prop.Type__c);
             resultList.add(propWrap);
         }
 
