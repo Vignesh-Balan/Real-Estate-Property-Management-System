@@ -9,6 +9,7 @@
     </div>
     <div class="search-button-div">
         <lightning-button variant="brand" label="Search"  onclick={handleClick} ></lightning-button>
+        <lightning-button label="New"  onclick={handleNewClick} ></lightning-button>
     </div>
     <p style="font-size:15px;margin:15px;">{message}</p>
     <template if:true ={isDataLoaded}>
@@ -26,7 +27,7 @@
                 </thead>
                 <tbody>
                     <template for:each={propList} for:item="propItem">
-                        <tr key={propItem.Id}>
+                        <tr key={propItem.Id} class="table-data-row">
                             <td class="name-data">{propItem.name}</td>
                             <td class="address-data">{propItem.address}</td>
                             <td class="price-data">Rs. {propItem.price}</td>
@@ -45,6 +46,16 @@
         </div>
 
     </template>
+
+    <template if:true={isNewClicked}>
+        <lightning-card title="Create New Account" icon-name="standard:account">
+            <lightning-record-form
+                object-api-name="Property__c"
+                fields={fields}
+                mode="edit">
+            </lightning-record-form>
+        </lightning-card>
+      </template>
 
    </div> 
 </template>

@@ -34,7 +34,7 @@ export default class CustomPropertyList extends LightningElement {
         if(data){
             this.furnishingStatusOptions = data.values;
         }else {
-            console.log('Status picklist error : ' +error);
+            console.log('Furnishin Status picklist error : ' +error);
         }
     }
 
@@ -62,7 +62,8 @@ export default class CustomPropertyList extends LightningElement {
         this.message = "";
         this.startNumber = 0;
         this.pageNumber = 1;
-        this.handlePropData();
+        this.isNewClicked=false;
+        this.handlePropData();    
     }
 
     handlePrevious(){
@@ -104,5 +105,16 @@ export default class CustomPropertyList extends LightningElement {
         }).catch( error => {
             console.log('Error Occured '+ error);
         });
+    }
+
+    isNewClicked = false;
+
+    fields=['Name', 'Type__c', 'Furnishing_Status__c', 'Status__c', 'Image__c', 'Rent__c', 'Address__Street__s', 'Address__City__s', 
+            'Address__PostalCode__s', 'Address__StateCode__s', 'Address__CountryCode__s', 'Description__c' ];
+
+    handleNewClick(){
+        this.isDataLoaded = false;
+        this.message = "";
+        this.isNewClicked = true;
     }
 }

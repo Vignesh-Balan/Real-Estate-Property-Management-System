@@ -4,7 +4,6 @@ public class PropertyValidateHelperClass {
         
         //Using single bulkified for loop to reduce CPU time and enhance performance
         for(Property__c prop: listOfNewProperty){
-            
             //Validating the address field.
             if(prop.Address__City__s == Null){
                 prop.Address__City__s.addError('City cannot be empty');
