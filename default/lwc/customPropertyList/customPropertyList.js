@@ -40,6 +40,11 @@ export default class CustomPropertyList extends LightningElement {
 
     handlePrice(event){
         this.price = event.target.value;
+        
+        if(this.price == "" || this.price == null || this.price == undefined){
+            this.price = 0.0;
+        }
+        console.log('price ' + this.price);
     }
 
     handleStatusChange(event){
