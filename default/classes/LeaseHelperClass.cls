@@ -1,4 +1,4 @@
-public class LeaseHelperClass {
+public with sharing class LeaseHelperClass {
 
     @AuraEnabled
     public static String getLeaseData(Id recordId){

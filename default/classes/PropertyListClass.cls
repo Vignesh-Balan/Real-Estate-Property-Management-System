@@ -1,9 +1,12 @@
-public class PropertyListClass {
+public with sharing class PropertyListClass {
 	
     @AuraEnabled
     public static String getPropertyList(Integer startNumber, Decimal inputPrice, String inputStatus, String inputFurnishingStatus, Decimal inputLong, Decimal inputLat){
         
         String query ='Select Id, Name, Address__Street__s, Address__City__s, Address__PostalCode__s, Address__StateCode__s, Address__CountryCode__s, Status__c, Rent__c, Type__c, Furnishing_Status__c from Property__c where Id != Null';
+        
+        inputStatus = String.escapeSingleQuotes(inputStatus);
+        inputFurnishingStatus = String.escapeSingleQuotes(inputFurnishingStatus);
         
         if(inputPrice != 0.0){
             query = query + ' and Rent__c <= '+inputPrice;
