@@ -16,7 +16,7 @@ public class PropertyGeolocationClass implements Queueable, Database.AllowsCallo
                 
                 Http http = new Http();
         HttpRequest request = new HttpRequest();
-        String apiKey = 'pk.23f4a22869e248404782f0079ca172a6';
+        String apiKey = 'hiding-the-api-keys';
         
         List<Geolocation__c> newGeoList =   new List<Geolocation__c>();
         for(Property__c prop: propertyList){
